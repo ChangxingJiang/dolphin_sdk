@@ -22,6 +22,9 @@ class DSPriority(enum.Enum):
     t_ds_schedules.workflow_instance_priority
     t_ds_task_instance.task_instance_priority
 
+    使用表单：
+    /projects/{project_code}/executors/start-process-instance 接口表单的 processInstancePriority 字段
+
     Notes
     -----
     需要注意的是，task_group 的优先级似乎不适用于这个枚举值。

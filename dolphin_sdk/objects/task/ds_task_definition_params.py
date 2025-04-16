@@ -93,7 +93,7 @@ class DSTaskDefinitionParamsDependent(DSTaskDefinitionParams):
             "localParams": self.local_params,
             "resourceList": self.resource_list,
             "scriptVersion": self.script_version,
-            "customConfig": self.dependence.to_json()
+            "dependence": self.dependence.to_json()
         }
 
 

@@ -6,6 +6,8 @@ from typing import List
 
 import requests
 
+from dolphin_sdk.form import DSPostSchedulesForm
+from dolphin_sdk.form import DSStartProcessInstanceForm
 from dolphin_sdk.form import PostProcessDefinitionForm
 from dolphin_sdk.objects import DSReleaseState
 
@@ -147,4 +149,29 @@ class DolphinWebSdk:
             "name": process_name,
             "releaseState": release_state.web_value
         })
+        return response["code"] == 0
+
+    def post_start_process_instance(self, project_code: int, data: DSStartProcessInstanceForm) -> bool:
+        """启动工作流实例"""
+        url = f"/dolphinscheduler/projects/{project_code}/executors/start-process-instance"
+        response = self._do_post(url, data.to_dict())
+        return response["code"] == 0
+
+    def post_schedules(self, project_code: int, data: DSPostSchedulesForm) -> dict:
+        """设置工作流定时"""
+        url = f"/dolphinscheduler/projects/{project_code}/schedules"
+        response = self._do_post(url, data.to_dict())
+        return response
+
+    def post_schedules_online(self, project_code: int, schedule_id: int) -> bool:
+        """将工作流定时上线"""
+        url = f"/dolphinscheduler/projects/{project_code}/schedules/{schedule_id}/online"
+        response = self._do_post(url, {})
+        print(response)
+        return response["code"] == 0
+
+    def post_schedules_offline(self, project_code: int, schedule_id: int) -> bool:
+        """将工作流定时下线"""
+        url = f"/dolphinscheduler/projects/{project_code}/schedules/{schedule_id}/offline"
+        response = self._do_post(url, {})
         return response["code"] == 0

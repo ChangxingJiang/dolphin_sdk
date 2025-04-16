@@ -31,7 +31,7 @@ class DSDependence:
     def create_by_one_daily_dependent(project_code: int, process_code: int):
         """构造单工作流单日依赖"""
         return DSDependence(
-            relation= DSDependRelation.AND,
+            relation=DSDependRelation.AND,
             depend_task_list=[DSDependTask.create_by_one_daily_dependent(project_code, process_code)],
         )
 
@@ -47,5 +47,5 @@ class DSDependence:
     def to_json(self) -> dict:
         return {
             "relation": self.relation.web_value,
-            "dependTaskList": self.depend_task_list,
+            "dependTaskList": [depend_task.to_json() for depend_task in self.depend_task_list],
         }

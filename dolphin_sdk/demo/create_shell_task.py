@@ -27,7 +27,9 @@ def create_process_with_one_shell_task(sdk: DolphinWebSdk,
         task_params=DSTaskDefinitionParamsShell(
             raw_script=shell_script
         ),
-        worker_group=worker_group
+        worker_group=worker_group,
+        fail_retry_times=3,
+        fail_retry_interval=10
     )
 
     # 构造任务关联定义
