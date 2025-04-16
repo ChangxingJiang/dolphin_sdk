@@ -1,0 +1,2 @@
+from dolphin_sdk.objects.process.ds_process_definition import DSProcessDefinition
+from dolphin_sdk.objects.process.ds_process_definition_record import DSProcessDefinitionRecord
