@@ -14,8 +14,8 @@ setup(
     author="changxing",
     author_email="1278729001@qq.com",
     url="https://github.com/ChangxingJiang/dolphin_sdk",
-    install_requires=[""],
-    license="MIT License",
+    install_requires=["metasequoia_connector", "Requests"],
+    license="Apache License V2.0",
     packages=find_packages(),
     platforms=["all"],
     classifiers=[
